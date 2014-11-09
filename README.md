@@ -5,7 +5,7 @@ A simple, portable timer
 ------------------------
 
 For some reason it is rather difficult to obtain elapsed milliseconds in C++. You can use time(), but that only has a resolution of 1 second. You can use clock() but then I/O operations which do not use clock cycles will report an ellapsed time of 0. Furthermore this is OS dependent. Consider the following example:
-```
+```c++
 std::clock_t tick = std::clock();
 
 // Wait for user input.
