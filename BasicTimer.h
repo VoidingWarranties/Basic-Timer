@@ -18,6 +18,13 @@ class BasicTimer {
     return milliseconds;
   }
 
+  friend uint64_t millisecondsBetweenTicks(const BasicTimer& start,
+                                           const BasicTimer& end) {
+    uint64_t milliseconds = (end.tick_.time - start.tick_.time) * 1000;
+    milliseconds += end.tick_.millitm - start.tick_.millitm;
+    return milliseconds;
+  }
+
  private:
   timeb tick_;
 };
