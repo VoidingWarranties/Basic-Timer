@@ -1,3 +1,7 @@
+/* Measures ellapsed time using the platform independent sys/timeb.h. See
+ * README.md for more details.
+ */
+
 #ifndef BASIC_TIMER_H_
 #define BASIC_TIMER_H_
 
@@ -18,6 +22,10 @@ class BasicTimer {
     return milliseconds;
   }
 
+  // Returns the number of milliseconds between two timers' ticks. start MUST
+  // have been ticked before end otherwise the value returned will not be
+  // correct as it is an unsigned value. Perhaps this could be changed in the
+  // future.
   friend uint64_t millisecondsBetweenTicks(const BasicTimer& start,
                                            const BasicTimer& end) {
     uint64_t milliseconds = (end.tick_.time - start.tick_.time) * 1000;
