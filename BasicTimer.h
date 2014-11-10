@@ -10,7 +10,7 @@ class BasicTimer {
     ftime(&tick_);
   }
 
-  uint64_t millisecondsSinceTick() {
+  uint64_t millisecondsSinceTick() const {
     timeb now;
     ftime(&now);
     uint64_t milliseconds = (now.time - tick_.time) * 1000;
