@@ -23,4 +23,16 @@ On Windows this example will work as intended, and `milliseconds` will hold the
 number of milliseconds spent waiting for user input. However in Linux and OS X
 IO operations do not use clock cycles and `milliseconds` will be near 0.
 
-BasicTimer provides a portable solution using the timeb struct and ftime.
+BasicTimer provides a portable solution using the `timeb` struct and `ftime`.
+Unlike the previous example, the example below will work as intended and report
+the number of milliseconds spent waiting for user input.
+```c++
+BasicTimer timer;
+timer.tick();
+
+// Wait for user input.
+std::string input;
+std::cin >> input;
+
+int milliseconds = timer.millisecondsSinceTick();
+```
